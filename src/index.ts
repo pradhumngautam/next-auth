@@ -8,7 +8,6 @@ import { authenticate } from "./middlewares/auth-middleware";
 import { errorHandler } from "./middlewares/error-handler";
 
 import authRouter from "./routes/auth-router";
-import connectDB from "./connections/database";
 import userRouter from "./routes/user-router";
 
 const app = express();
@@ -45,8 +44,6 @@ app.use(authRouter);
 app.use(cookieParser());
 app.use("/users", authenticate, userRouter);
 app.use(errorHandler);
-
-connectDB();
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
