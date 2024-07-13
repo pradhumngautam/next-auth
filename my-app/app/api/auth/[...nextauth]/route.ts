@@ -1,7 +1,6 @@
-import { NextRequest, NextResponse } from "next/server"
+import { NEXT_AUTH_CONFIG } from "@/app/lib/auth"
+import NextAuth from "next-auth"
 
-export function GET(req: NextRequest) {
-    return NextResponse.json({
-        message: "Handler"
-    })
-}
+const handler = NextAuth(NEXT_AUTH_CONFIG)
+
+export { handler as GET, handler as POST }
